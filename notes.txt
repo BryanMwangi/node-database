@@ -1,0 +1,29 @@
+WARNING: These notes do not serve as documentation but serve as a means for me to 
+remember what I am doing.
+
+TOPIC ONE: NUID
+
+I want to start implementing uids for documents as a means of identifying them and
+using the nuids to create indices for the documents.
+
+structure of the nuid:
+ 8 bits        4 bits      4 bits         12 bits
+XXXXXXXX    -   XXXX  -   XXXXXXXX  -    XXXXXXXXXXXX
+    ^            ^            ^                 ^
+    |            |            |                 |
+    |            |            |                 |
+    |            |            |                 |
+   unix       version        pid              rand
+ timestamp                                   buffer
+
+So the nuid will contain 4 parts and we will use the timestamp in future for time-based
+queries.
+unix timestamp: since unix epoch, 1970-01-01 00:00 and will occcupy 8 bits
+
+version:  every version from v1 to vn will occupy 4 bits
+
+pid will contain the pid of the machine executing the nuid generation. This can be used to track
+a file in case a db in the cluster pool fails to sync with other db's.
+
+
+random buffer will act as our 
