@@ -1,7 +1,8 @@
 const FS = require("fs");
 const path = require("path");
 const msgpack = require("@msgpack/msgpack");
-const dbPath = path.join(__dirname, "/Volumes/database.ndb");
+
+const dbPath = "./database.ndb";
 
 const documentLimit = 6291456; // 6MB
 
